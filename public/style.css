@@ -1,0 +1,21 @@
+.hubtree-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    padding: 1rem;
+    z-index: 1000000000;
+}
+
+.hubtree-modal-inner {
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    width: 800px;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    height: 100%;
+    overflow-y: scroll;
+}
