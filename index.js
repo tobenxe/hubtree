@@ -1,12 +1,10 @@
 const {render} = require('tree-from-paths');
-const { parse } = require( 'node-html-parser');
 
 chrome.runtime.onMessage.addListener(({action}, sender, sendRes)=>{
   if(action ==='run_main'){
       modalShown()
         .then(getName)
-        .then(goToFindFile)
-        .then(goToPathEndpoint)
+        .then(getTree)
         .then(createTree)
         .catch(err=>{
           //TODO - Maybe do some clean up here
@@ -15,16 +13,7 @@ chrome.runtime.onMessage.addListener(({action}, sender, sendRes)=>{
   }
 })
 //Make a directory tree and inject it into HTML
-const createTree = async (paths) => {
-  document.querySelector('#hubtree-modal-inner').innerHTML = render(
-          paths,
-          '',
-          (parent, file, explicit) => {
-            // return `<a class='link' href='${parent}${file}'>${parent}${file}</a><br>`
-            return `${parent}${file}<br>`
-          }
-        )
-}
+const createTree = async (paths) => document.querySelector('#hubtree-modal-inner').innerHTML = render( paths, '',(parent, file, explicit) =>  `${file}<br>`);
 
 //Add modal to webpage
 const addModal = async () =>{
@@ -54,18 +43,14 @@ const getName = async () => {
   if(name && name.includes('/')) return name;
   throw new Error('Name does not exist')
 }
-//Go to find file to get the path for the tree-list endpoint
-const goToFindFile = async (name) =>{
-  const findFileUrl = `https://github.com/${name}/find/master`;
-  const htmlStr = await fetch(findFileUrl).then(res=>res.text());
-  const root = parse(htmlStr);
-  const path = root.querySelector('fuzzy-list').getAttribute('data-url');
-  return path
-}
-//Make a request to the endpoint that gives us all files strings in an array.
-const goToPathEndpoint = async (endpoint) =>{
-  const getPathsUrl = `https://github.com${endpoint}`;
-  const paths = (await fetch(getPathsUrl).then(res=>res.json())).paths;
-  if(paths) return paths;
+
+const getTree = async (name) =>{
+  const endpoint = `https://api.github.com/repos/${name}/git/trees/master?recursive=1`
+  const treeData = await fetch(endpoint).then(res=>{
+   if(res.ok) return res.json();
+   throw new Error('Problem with request')
+  })
+  const paths = treeData.tree.map(item=>item.path);
+  if(paths.length > 0) return paths;
   throw new Error('No paths');
 }
