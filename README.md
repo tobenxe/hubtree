@@ -1,7 +1,7 @@
 <h1 align="center">🌴 hubtree</h1>
 <p align="center"> A chrome extension to view the directory tree of a github repository. </p>
 
-###Motivation:
+### Motivation:
 Seeing directory structure:
 - Better learning and understanding
 
@@ -14,7 +14,7 @@ Seeing directory structure:
     - Click load unpacked in the upper right corner
     - Select the hubtree folder that is contained **within** the project directory
 
-###Development
+### Development
 ```
 npm install 
 ```
@@ -26,7 +26,7 @@ Then load to chrome in developer mode or reload the extension if it has already 
 
 If there is a more efficient way to do this [let me know](https://twitter.com/toberej)
 
-###Todos/Contribution Ideas
+### Todos/Contribution Ideas
 - [ ] Add links to directory tree
 - [ ] Make the modal less terrible looking
 - [ ] Add a close (X) icon on the modal
