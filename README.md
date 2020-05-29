@@ -26,10 +26,13 @@ Then load to chrome in developer mode or reload the extension if it has already 
 
 If there is a more efficient way to do this [let me know](https://twitter.com/toberej)
 
-### Todos/Contribution Ideas
+### Todos
 - [ ] Add links to directory tree
 - [ ] Make the modal less terrible looking
+- [ ] Clicking modal background overlay should close/remove the modal
+- [ ] Possibly save tree in storage (session or chrome.storage) to minimize requests if opening the modal multiple times in the same repository
 - [ ] Add a close (X) icon on the modal
+- [ ] Show message in modal when not in or can't find a repository, or don't show the modal in these cases (notification maybe ?).
 
 ### Contact
 DM on twitter [here](https://twitter.com/toberej)
