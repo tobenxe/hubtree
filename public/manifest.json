@@ -8,6 +8,13 @@
     "background": {
       "scripts": ["background.js"]
     },
+    "content_scripts": [
+      {
+        "matches": [ "https://github.com/*"],
+        "js": ["main.js"],
+        "css": ["style.css"]
+      }
+    ],
     "icons": { 
         "16": "images/icon16.png",
         "48": "images/icon128.png",
@@ -16,7 +23,6 @@
     "browser_action": {
         "default_icon": {
           "16": "images/icon16.png"     
-        },
-        "default_popup": "popup.html"     
+        }  
       }
 }
