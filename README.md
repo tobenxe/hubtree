@@ -14,6 +14,9 @@ Seeing directory structure:
     - Click load unpacked in the upper right corner
     - Select the hubtree folder that is contained **within** the project directory
 
+### Usage
+- Click the extension icon when in a github repsitory to show/hide the tree modal
+
 ### Development
 ```
 npm install 
