@@ -1,6 +1,8 @@
 <h1 align="center">🌴 hubtree</h1>
 <p align="center"> A chrome extension to view the directory tree of a github repository. </p>
-
+<p align="center">
+  <img width="660" height="400" src="./hubtreeimg.png" alt="twitter email digest gif">
+</p>
 ### Motivation:
 Seeing directory structure:
 - Better learning and understanding
