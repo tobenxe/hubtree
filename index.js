@@ -10,7 +10,9 @@ chrome.runtime.onMessage.addListener(({action}, sender, sendRes)=>{
           //TODO - Maybe do some clean up here
           console.log(err);
         })
+        .then(()=>sendRes({status:'done'}))
   }
+  return true
 })
 //Make a directory tree and inject it into HTML
 const createTree = async (paths) => document.querySelector('#hubtree-modal-inner').innerHTML = render( paths, '',(parent, file, explicit) =>  `${file}<br>`);
