@@ -8,11 +8,11 @@ Seeing directory structure:
 ### Installation Options:
 1) **Chrome Webstore:** COMING SOON
 2) **Manual Install:**
-    -  Download/Clone the [zip](./hubtree.zip)
+    -  Download/Clone the project
     - In your chrome address bar type: chrome://extensions
     - In the upper left turn on Developer Mode
     - Click load unpacked in the upper right corner
-    - Select the hubtree folder in the project directory
+    - Select the hubtree folder that is contained **within** the project directory
 
 ###Development
 ```
