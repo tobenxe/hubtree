@@ -88,309 +88,64 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const {render} = __webpack_require__(1)
-let arr = [
-    ".gitignore",
-    ".vscode/settings.json",
-    "CONTRIBUTING.md",
-    "LICENSE",
-    "README.md",
-    "api/.env.example",
-    "api/.eslintignore",
-    "api/.eslintrc.json",
-    "api/.prettierrc",
-    "api/README.md",
-    "api/package-lock.json",
-    "api/package.json",
-    "api/src/constants/issues.ts",
-    "api/src/constants/projects.ts",
-    "api/src/controllers/authentication.ts",
-    "api/src/controllers/comments.ts",
-    "api/src/controllers/issues.ts",
-    "api/src/controllers/projects.ts",
-    "api/src/controllers/test.ts",
-    "api/src/controllers/users.ts",
-    "api/src/database/createConnection.ts",
-    "api/src/database/createGuestAccount.ts",
-    "api/src/database/createTestAccount.ts",
-    "api/src/database/resetDatabase.ts",
-    "api/src/entities/Comment.ts",
-    "api/src/entities/Issue.ts",
-    "api/src/entities/Project.ts",
-    "api/src/entities/User.ts",
-    "api/src/entities/index.ts",
-    "api/src/errors/asyncCatch.ts",
-    "api/src/errors/customErrors.ts",
-    "api/src/errors/index.ts",
-    "api/src/index.ts",
-    "api/src/middleware/authentication.ts",
-    "api/src/middleware/errors.ts",
-    "api/src/middleware/response.ts",
-    "api/src/routes.ts",
-    "api/src/serializers/issues.ts",
-    "api/src/types/env.d.ts",
-    "api/src/types/express.d.ts",
-    "api/src/utils/authToken.ts",
-    "api/src/utils/typeorm.ts",
-    "api/src/utils/validation.ts",
-    "api/tsconfig-paths.js",
-    "api/tsconfig.json",
-    "client/.babelrc",
-    "client/.eslintrc.json",
-    "client/.prettierrc",
-    "client/README.md",
-    "client/cypress.json",
-    "client/cypress/.eslintrc.json",
-    "client/cypress/integration/authentication.spec.js",
-    "client/cypress/integration/issueCreate.spec.js",
-    "client/cypress/integration/issueDetails.spec.js",
-    "client/cypress/integration/issueFilters.spec.js",
-    "client/cypress/integration/issueSearch.spec.js",
-    "client/cypress/integration/issuesDragDrop.spec.js",
-    "client/cypress/integration/projectSettings.spec.js",
-    "client/cypress/plugins/index.js",
-    "client/cypress/support/commands.js",
-    "client/cypress/support/index.js",
-    "client/cypress/support/utils.js",
-    "client/jest.config.js",
-    "client/jest/fileMock.js",
-    "client/jest/styleMock.js",
-    "client/jsconfig.json",
-    "client/package-lock.json",
-    "client/package.json",
-    "client/server.js",
-    "client/src/App/BaseStyles.js",
-    "client/src/App/NormalizeStyles.js",
-    "client/src/App/Routes.jsx",
-    "client/src/App/Toast/Styles.js",
-    "client/src/App/Toast/index.jsx",
-    "client/src/App/assets/fonts/CircularStd-Black.eot",
-    "client/src/App/assets/fonts/CircularStd-Black.otf",
-    "client/src/App/assets/fonts/CircularStd-Black.svg",
-    "client/src/App/assets/fonts/CircularStd-Black.ttf",
-    "client/src/App/assets/fonts/CircularStd-Black.woff",
-    "client/src/App/assets/fonts/CircularStd-Black.woff2",
-    "client/src/App/assets/fonts/CircularStd-Bold.eot",
-    "client/src/App/assets/fonts/CircularStd-Bold.otf",
-    "client/src/App/assets/fonts/CircularStd-Bold.svg",
-    "client/src/App/assets/fonts/CircularStd-Bold.ttf",
-    "client/src/App/assets/fonts/CircularStd-Bold.woff",
-    "client/src/App/assets/fonts/CircularStd-Bold.woff2",
-    "client/src/App/assets/fonts/CircularStd-Book.eot",
-    "client/src/App/assets/fonts/CircularStd-Book.otf",
-    "client/src/App/assets/fonts/CircularStd-Book.svg",
-    "client/src/App/assets/fonts/CircularStd-Book.ttf",
-    "client/src/App/assets/fonts/CircularStd-Book.woff",
-    "client/src/App/assets/fonts/CircularStd-Book.woff2",
-    "client/src/App/assets/fonts/CircularStd-Medium.eot",
-    "client/src/App/assets/fonts/CircularStd-Medium.otf",
-    "client/src/App/assets/fonts/CircularStd-Medium.svg",
-    "client/src/App/assets/fonts/CircularStd-Medium.ttf",
-    "client/src/App/assets/fonts/CircularStd-Medium.woff",
-    "client/src/App/assets/fonts/CircularStd-Medium.woff2",
-    "client/src/App/assets/fonts/jira.svg",
-    "client/src/App/assets/fonts/jira.ttf",
-    "client/src/App/assets/fonts/jira.woff",
-    "client/src/App/fontStyles.css",
-    "client/src/App/index.jsx",
-    "client/src/Auth/Authenticate.jsx",
-    "client/src/Project/Board/Filters/Styles.js",
-    "client/src/Project/Board/Filters/index.jsx",
-    "client/src/Project/Board/Header/Styles.js",
-    "client/src/Project/Board/Header/index.jsx",
-    "client/src/Project/Board/IssueDetails/AssigneesReporter/Styles.js",
-    "client/src/Project/Board/IssueDetails/AssigneesReporter/index.jsx",
-    "client/src/Project/Board/IssueDetails/Comments/BodyForm/Styles.js",
-    "client/src/Project/Board/IssueDetails/Comments/BodyForm/index.jsx",
-    "client/src/Project/Board/IssueDetails/Comments/Comment/Styles.js",
-    "client/src/Project/Board/IssueDetails/Comments/Comment/index.jsx",
-    "client/src/Project/Board/IssueDetails/Comments/Create/ProTip/Styles.js",
-    "client/src/Project/Board/IssueDetails/Comments/Create/ProTip/index.jsx",
-    "client/src/Project/Board/IssueDetails/Comments/Create/Styles.js",
-    "client/src/Project/Board/IssueDetails/Comments/Create/index.jsx",
-    "client/src/Project/Board/IssueDetails/Comments/Styles.js",
-    "client/src/Project/Board/IssueDetails/Comments/index.jsx",
-    "client/src/Project/Board/IssueDetails/Dates/Styles.js",
-    "client/src/Project/Board/IssueDetails/Dates/index.jsx",
-    "client/src/Project/Board/IssueDetails/Delete.jsx",
-    "client/src/Project/Board/IssueDetails/Description/Styles.js",
-    "client/src/Project/Board/IssueDetails/Description/index.jsx",
-    "client/src/Project/Board/IssueDetails/EstimateTracking/Styles.js",
-    "client/src/Project/Board/IssueDetails/EstimateTracking/TrackingWidget/Styles.js",
-    "client/src/Project/Board/IssueDetails/EstimateTracking/TrackingWidget/index.jsx",
-    "client/src/Project/Board/IssueDetails/EstimateTracking/index.jsx",
-    "client/src/Project/Board/IssueDetails/Loader.jsx",
-    "client/src/Project/Board/IssueDetails/Priority/Styles.js",
-    "client/src/Project/Board/IssueDetails/Priority/index.jsx",
-    "client/src/Project/Board/IssueDetails/Status/Styles.js",
-    "client/src/Project/Board/IssueDetails/Status/index.jsx",
-    "client/src/Project/Board/IssueDetails/Styles.js",
-    "client/src/Project/Board/IssueDetails/Title/Styles.js",
-    "client/src/Project/Board/IssueDetails/Title/index.jsx",
-    "client/src/Project/Board/IssueDetails/Type/Styles.js",
-    "client/src/Project/Board/IssueDetails/Type/index.jsx",
-    "client/src/Project/Board/IssueDetails/index.jsx",
-    "client/src/Project/Board/Lists/List/Issue/Styles.js",
-    "client/src/Project/Board/Lists/List/Issue/index.jsx",
-    "client/src/Project/Board/Lists/List/Styles.js",
-    "client/src/Project/Board/Lists/List/index.jsx",
-    "client/src/Project/Board/Lists/Styles.js",
-    "client/src/Project/Board/Lists/index.jsx",
-    "client/src/Project/Board/index.jsx",
-    "client/src/Project/IssueCreate/Styles.js",
-    "client/src/Project/IssueCreate/index.jsx",
-    "client/src/Project/IssueSearch/NoResultsSvg.jsx",
-    "client/src/Project/IssueSearch/Styles.js",
-    "client/src/Project/IssueSearch/index.jsx",
-    "client/src/Project/NavbarLeft/Styles.js",
-    "client/src/Project/NavbarLeft/index.jsx",
-    "client/src/Project/ProjectSettings/Styles.js",
-    "client/src/Project/ProjectSettings/index.jsx",
-    "client/src/Project/Sidebar/Styles.js",
-    "client/src/Project/Sidebar/index.jsx",
-    "client/src/Project/Styles.js",
-    "client/src/Project/index.jsx",
-    "client/src/browserHistory.js",
-    "client/src/favicon.png",
-    "client/src/index.html",
-    "client/src/index.jsx",
-    "client/src/shared/components/AboutTooltip/Styles.js",
-    "client/src/shared/components/AboutTooltip/assets/feedback.png",
-    "client/src/shared/components/AboutTooltip/index.jsx",
-    "client/src/shared/components/Avatar/Styles.js",
-    "client/src/shared/components/Avatar/index.jsx",
-    "client/src/shared/components/Breadcrumbs/Styles.js",
-    "client/src/shared/components/Breadcrumbs/index.jsx",
-    "client/src/shared/components/Button/Styles.js",
-    "client/src/shared/components/Button/index.jsx",
-    "client/src/shared/components/ConfirmModal/Styles.js",
-    "client/src/shared/components/ConfirmModal/index.jsx",
-    "client/src/shared/components/CopyLinkButton.jsx",
-    "client/src/shared/components/DatePicker/DateSection.jsx",
-    "client/src/shared/components/DatePicker/Styles.js",
-    "client/src/shared/components/DatePicker/TimeSection.jsx",
-    "client/src/shared/components/DatePicker/index.jsx",
-    "client/src/shared/components/Form/Field.jsx",
-    "client/src/shared/components/Form/Styles.js",
-    "client/src/shared/components/Form/index.jsx",
-    "client/src/shared/components/Icon/Styles.js",
-    "client/src/shared/components/Icon/index.jsx",
-    "client/src/shared/components/Input/Styles.js",
-    "client/src/shared/components/Input/index.jsx",
-    "client/src/shared/components/InputDebounced.jsx",
-    "client/src/shared/components/IssuePriorityIcon/Styles.js",
-    "client/src/shared/components/IssuePriorityIcon/index.jsx",
-    "client/src/shared/components/IssueTypeIcon/Styles.js",
-    "client/src/shared/components/IssueTypeIcon/index.jsx",
-    "client/src/shared/components/Logo.jsx",
-    "client/src/shared/components/Modal/Styles.js",
-    "client/src/shared/components/Modal/index.jsx",
-    "client/src/shared/components/PageError/Styles.js",
-    "client/src/shared/components/PageError/assets/background-forest.jpg",
-    "client/src/shared/components/PageError/index.jsx",
-    "client/src/shared/components/PageLoader/Styles.js",
-    "client/src/shared/components/PageLoader/index.jsx",
-    "client/src/shared/components/ProjectAvatar.jsx",
-    "client/src/shared/components/Select/Dropdown.jsx",
-    "client/src/shared/components/Select/Styles.js",
-    "client/src/shared/components/Select/index.jsx",
-    "client/src/shared/components/Spinner.jsx",
-    "client/src/shared/components/TextEditedContent/Styles.js",
-    "client/src/shared/components/TextEditedContent/index.jsx",
-    "client/src/shared/components/TextEditor/Styles.js",
-    "client/src/shared/components/TextEditor/index.jsx",
-    "client/src/shared/components/Textarea/Styles.js",
-    "client/src/shared/components/Textarea/index.jsx",
-    "client/src/shared/components/Tooltip/Styles.js",
-    "client/src/shared/components/Tooltip/index.jsx",
-    "client/src/shared/components/index.js",
-    "client/src/shared/constants/issues.js",
-    "client/src/shared/constants/keyCodes.js",
-    "client/src/shared/constants/projects.js",
-    "client/src/shared/hooks/api/index.js",
-    "client/src/shared/hooks/api/mutation.js",
-    "client/src/shared/hooks/api/query.js",
-    "client/src/shared/hooks/currentUser.js",
-    "client/src/shared/hooks/deepCompareMemoize.js",
-    "client/src/shared/hooks/mergeState.js",
-    "client/src/shared/hooks/onEscapeKeyDown.js",
-    "client/src/shared/hooks/onOutsideClick.js",
-    "client/src/shared/utils/api.js",
-    "client/src/shared/utils/authToken.js",
-    "client/src/shared/utils/browser.js",
-    "client/src/shared/utils/dateTime.js",
-    "client/src/shared/utils/javascript.js",
-    "client/src/shared/utils/queryParamModal.js",
-    "client/src/shared/utils/styles.js",
-    "client/src/shared/utils/toast.js",
-    "client/src/shared/utils/url.js",
-    "client/src/shared/utils/validation.js",
-    "client/webpack.config.js",
-    "client/webpack.config.production.js",
-    "client/yarn.lock",
-    "package-lock.json",
-    "package.json"
-  ]
+const {render} = __webpack_require__(1);
 
-// console.log(render(
-//   arr,
-//   '',
-//   (parent, file, explicit) => {
-//     return `<a href='${parent}${file}'>${file}${explicit ? '(*)' : ''}</a>`
-//   }
-// ))
-console.log(render(
-  arr,
-  '',
-  (parent, file, explicit) => {
-    return `<a href='${parent}${file}'>${file}${explicit ? '(*)' : ''}</a>`
+chrome.runtime.onMessage.addListener(({action}, sender, sendRes)=>{
+  if(action ==='run_main'){
+      modalShown()
+        .then(getName)
+        .then(getTree)
+        .then(createTree)
+        .catch(err=>{
+          //TODO - Maybe do some clean up here
+          console.log(err);
+        })
+        .then(()=>sendRes({status:'done'}))
   }
-))
-
-//Create the bar element
-const createBar = async () =>{
-
-}
+  return true
+})
 //Make a directory tree and inject it into HTML
-const createTree = async () => {
-  const container = document.querySelector('#container');
-  container.innerHTML = render(
-          arr,
-          '',
-          (parent, file, explicit) => {
-            return `<a href='${parent}${file}'>${parent}${file}</a><br>`
-            // return `${parent}${file}<br>`
-          }
-        )
+const createTree = async (paths) => document.querySelector('#hubtree-modal-inner').innerHTML = render( paths, '',(parent, file, explicit) =>  `${file}<br>`);
+
+//Add modal to webpage
+const addModal = async () =>{
+  const modalDiv = document.createElement('div');
+  modalDiv.id = 'hubtree-modal';
+  modalDiv.classList.add('hubtree-modal');
+  const modalInnerHtml = `<div id="hubtree-modal-inner" class="hubtree-modal-inner"> </div>`
+  modalDiv.innerHTML = modalInnerHtml;
+  document.body.appendChild(modalDiv);
 }
-//Remove the bar element
-const removeBar = () => {
-
+//Check if modal is shown
+const modalShown = async () =>{
+  const modal = document.querySelector('#hubtree-modal');
+  //If shown remove modal, if not shown create
+     if (modal) {
+         modal.parentNode.removeChild(modal)
+         throw new Error('Closed Modal');
+     }
+     await addModal()
+     return true
+}
+//Get the name of the repository
+const getName = async () => {
+  const name = document.querySelector('meta[property="og:title"]').content;
+  console.log(name)
+  //TODO - There is probably a better way to validate being in a repository
+  if(name && name.includes('/')) return name;
+  throw new Error('Name does not exist')
 }
 
-const inRepo = () => {
-
+const getTree = async (name) =>{
+  const endpoint = `https://api.github.com/repos/${name}/git/trees/master?recursive=1`
+  const treeData = await fetch(endpoint).then(res=>{
+   if(res.ok) return res.json();
+   throw new Error('Problem with request')
+  })
+  const paths = treeData.tree.map(item=>item.path);
+  if(paths.length > 0) return paths;
+  throw new Error('No paths');
 }
-
-createTree()
-
-// if(inRepo()){
-//     //If bar is not already shown, create bar.
-//     if(!barShown()){
-//         return createBar()
-//                     .then(createTree)   //Create tree
-//                     .then(console.log) //Log done
-//                     .catch(err=>console.log(err))
-//     }
-//     //Remove bar if already shown
-//     removeBar();
-// }
-
-
-// //Listen for message from background script
-// chrome.extension.onMessage.addListener((req, sender, sendRes)=>{
-//     //Check if we are in a repository
-// })
 
 /***/ }),
 /* 1 */
@@ -405,7 +160,7 @@ createTree()
 const _ = {
   groupBy: __webpack_require__(2)
 }
-const archy = __webpack_require__(5)
+const archy = __webpack_require__(4)
 
 /**
  * Renders a list of files like
@@ -541,7 +296,7 @@ module.exports = {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global, module) {/**
+/* WEBPACK VAR INJECTION */(function(module) {/**
  * lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
  * Copyright jQuery Foundation and other contributors <https://jquery.org/>
@@ -2911,36 +2666,10 @@ function property(path) {
 
 module.exports = groupBy;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3), __webpack_require__(4)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(3)(module)))
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -2968,7 +2697,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = function archy (obj, prefix, opts) {
