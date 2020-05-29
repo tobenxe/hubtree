@@ -14,7 +14,9 @@ const createTree = async (paths) => {
 }
 
 const getName = async () => {
-
+  const name = document.querySelector('meta[property="og:title"]').content;
+  if(name) return name;
+  throw new Error('Name does not exist')
 }
 
 const goToFindFile = async (name) =>{
@@ -25,8 +27,6 @@ const goToPathEndpoint = async (endpoint) =>{
 
 }
 
-
-
 //Function calls
 getName()
   .then(goToFindFile)
@@ -36,5 +36,3 @@ getName()
     console.log(err);
     container.innerHTML = 'Oops :/'
   })
-
-
