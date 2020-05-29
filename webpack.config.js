@@ -11,6 +11,7 @@ module.exports = {
         path : path.resolve(__dirname , 'hubtree'),
         filename: 'main.js'
     },
+    target: 'node',
     plugins:  [
         new HtmlWebpackPlugin ({
             template : './public/popup.html'
