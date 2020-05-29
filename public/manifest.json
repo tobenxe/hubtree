@@ -4,7 +4,6 @@
     "author": "tobe",
     "version": "1.0.0",
     "description": "View a directory tree for github repositories",
-    "permissions": [ "https://github.com/*"],
     "background": {
       "scripts": ["background.js"]
     },
