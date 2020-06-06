@@ -3,6 +3,7 @@ const {render} = require('tree-from-paths');
 chrome.runtime.onMessage.addListener(({action}, sender, sendRes)=>{
   if(action ==='run_main'){
       modalShown()
+        .then(addListeners)
         .then(getName)
         .then(getTree)
         .then(createTree)
@@ -55,4 +56,10 @@ const getTree = async (name) =>{
   const paths = treeData.tree.map(item=>item.path);
   if(paths.length > 0) return paths;
   throw new Error('No paths');
+}
+
+const addListeners = async () =>{
+  document.querySelector('#hubtree-modal').addEventListener('click', (e)=>{
+    if(e.target === e.currentTarget) modalShown().catch(err=>console.log(err));
+  })
 }
