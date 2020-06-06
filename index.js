@@ -16,7 +16,16 @@ chrome.runtime.onMessage.addListener(({action}, sender, sendRes)=>{
   return true
 })
 //Make a directory tree and inject it into HTML
-const createTree = async (paths) => document.querySelector('#hubtree-modal-inner').innerHTML = render( paths, '',(parent, file, explicit) =>  `${file}<br>`);
+const createTree = async ({paths, name, tree}) => {
+   document.querySelector('#hubtree-modal-inner').innerHTML = render( paths, '',(parent, file, explicit) => {
+     const type = (tree.find(item=>{
+       //Account for extra slash the package adds to file name
+       if(file[file.length-1] === '/') return item.path===(parent+file.slice(0, file.length-1))
+       return item.path===(parent+file)
+      })).type
+      return  `<a target="_blank" class="link" href=" https://github.com/${name}/${type}/master/${parent}${file}" > ${file}</a>  <br>`
+  })
+};
 
 //Add modal to webpage
 const addModal = async () =>{
@@ -54,7 +63,7 @@ const getTree = async (name) =>{
    throw new Error('Problem with request')
   })
   const paths = treeData.tree.map(item=>item.path);
-  if(paths.length > 0) return paths;
+  if(paths.length > 0) return {paths, name, tree: treeData.tree};
   throw new Error('No paths');
 }
 
