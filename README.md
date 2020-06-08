@@ -9,7 +9,7 @@ Seeing directory structure:
 - Better learning and understanding
 
 ### Installation Options:
-1) **Chrome Webstore:** COMING SOON
+1) **Chrome Webstore:** https://chrome.google.com/webstore/detail/hubtree/aokgnafjkofmecapeimdfcacpjefamnh
 2) **Manual Install:**
     -  Download/Clone the project
     - In your chrome address bar type: chrome://extensions
