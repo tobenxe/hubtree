@@ -30,7 +30,7 @@ npm run build
 ```
 Then load to chrome in developer mode or reload the extension if it has already been loaded in chrome. 
 
-If there is a more efficient way to do this [let me know](https://twitter.com/toberej)
+If there is a more efficient way to do this [let me know](https://twitter.com/tobenxe)
 
 ### Todos
 - [ ] Make the modal less terrible looking
@@ -38,5 +38,5 @@ If there is a more efficient way to do this [let me know](https://twitter.com/to
 - [ ] Show message in modal when not in or can't find a repository, or don't show the modal in these cases (notification maybe ?).
 
 ### Contact
-DM on twitter [here](https://twitter.com/toberej)
+DM on twitter [here](https://twitter.com/tobenxe)
 
